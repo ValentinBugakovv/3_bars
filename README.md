@@ -34,7 +34,8 @@ return attributes
 
 # Функця  def get_smallest_bar(bar_data) аналогична, но ыводит информацию о самом маленьком баре
 
-# Функция def get_closest_bar(bar_data, longitude, latitude) примает на вход список баров, координаты( долгота и широта), возвращает самый близкий бар относительно введенных координатов в формате json
+# Функция def get_closest_bar(bar_data, longitude, latitude) примает на вход список баров, 
+координаты( долгота и широта), возвращает самый близкий бар относительно введенных координатов в формате json
 def get_closest_bar(bar_data, longitude=37.55, latitude=55.75):
   return attributes
 ```
