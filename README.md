@@ -33,7 +33,7 @@ return json.load(jsonfile)
 def get_biggest_bar(bar_data):
 return attributes
 
-# Функця  def get_smallest_bar(bar_data) аналогична, но ыводит информацию о самом маленьком баре
+# Функця  def get_smallest_bar(bar_data) аналогична, но выводит информацию о самом маленьком баре
 
 # Функция def get_closest_bar(bar_data, longitude, latitude) примает на вход список баров, 
 # координаты( долгота и широта), 
