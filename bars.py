@@ -17,12 +17,13 @@ def get_arguments():
 
 def pretty_print_json(func):
     def wrap(*args):
-        return json.dumps(func(args[0]),
-                          sort_keys=True,
-                          indent=4,
-                          ensure_ascii=False,
-                          separators=(",", ": ")
-                          )
+        return json.dumps(
+            func(args[0]),
+            sort_keys=True,
+            indent=4,
+            ensure_ascii=False,
+            separators=(",", ": ")
+        )
 
     return wrap
 
