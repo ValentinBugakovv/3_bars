@@ -10,6 +10,7 @@
 
 import json
 import argparse
+import os
 from math import sqrt
 
 # Функция def get_arguments принимает на вход путь до файла из командной строки
@@ -47,41 +48,18 @@ def get_closest_bar(bar_data, longitude=37.55, latitude=55.75):
 ```bash
 
 $ python bars.py filepath.json # possibly requires call of python3 executive instead of just python
+
 # Пример вывода
 
+САМЫЙ БОЛЬШЙ БАР:
+Спорт бар <<Красная машина>>
 
-{
-    "geometry": {
-        "coordinates": [
-            37.638228501070095,
-            55.70111462948684
-        ],
-        "type": "Point"
-    },
-    "properties": {
-        "Attributes": {
-            "Address": "Автозаводская улица, дом 23, строение 1",
-            "AdmArea": "Южный административный округ",
-            "District": "Даниловский район",
-            "IsNetObject": "нет",
-            "Name": "Спорт бар «Красная машина»",
-            "OperatingCompany": null,
-            "PublicPhone": [
-                {
-                    "PublicPhone": "(905) 795-15-84"
-                }
-            ],
-            "SeatsCount": 450,
-            "SocialPrivileges": "нет",
-            "global_id": 169375059
-        },
-        "DatasetId": 1796,
-        "ReleaseNumber": 2,
-        "RowId": "fbe6c340-4707-4d74-b7ca-2b84a23bf3a8",
-        "VersionNumber": 2
-    },
-    "type": "Feature"
-}
+САМЫЙ МАЛЕНЬКИЙ БАР:
+Бар Соки
+
+САМЫЙ МАЛЕНЬКИЙ БАР:
+Бар <<Разлив>>
+
 ```
 
 Запуск на Windows происходит аналогично.
