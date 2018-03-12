@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 from math import sqrt
 
 
@@ -15,74 +16,79 @@ def get_arguments():
     return args
 
 
-def pretty_print_json(func):
-    def wrap(*args):
-        return json.dumps(
-            func(args[0]),
-            sort_keys=True,
-            indent=4,
-            ensure_ascii=False,
-            separators=(",", ": ")
-        )
+def features(func):
+    def warp(*args):
+        return func(args[0])["features"]
 
-    return wrap
+    return warp
 
 
+def bar_name(func):
+    def warp(*args):
+        return func(args[0])["properties"]["Attributes"]["Name"]
+
+    return warp
+
+
+@features
 def load_data(filepath):
     with open(filepath, "r", encoding="UTF-8") as json_file:
         return json.load(json_file)
 
 
-@pretty_print_json
-def get_attributes_biggest_bar(bar_data):
+@bar_name
+def get_name_biggest_bar(bar_data):
     biggest_bar = max(
-        bar_data["features"], key=lambda bar:
+        bar_data,
+        key=lambda bar:
         bar["properties"]["Attributes"]["SeatsCount"]
     )
-    attributes = biggest_bar["properties"]["Attributes"]
-    return attributes
+    return biggest_bar
 
 
-@pretty_print_json
-def get_attributes_smallest_bar(bar_data):
+@bar_name
+def get_name_smallest_bar(bar_data):
     smallest_bar = min(
-        bar_data["features"], key=lambda bar:
+        bar_data,
+        key=lambda bar:
         bar["properties"]["Attributes"]["SeatsCount"]
     )
-    attributes = smallest_bar["properties"]["Attributes"]
-    return attributes
+    return smallest_bar
 
 
-@pretty_print_json
-def get_attributes_closest_bar(bar_data, longitude=37.55, latitude=55.75):
+@bar_name
+def get_name_closest_bar(bar_data, longitude=37.55, latitude=55.75):
     closest_bar = min(
-        bar_data["features"], key=lambda bar: sqrt(
+        bar_data,
+        key=lambda bar:
+        sqrt(
             (bar["geometry"]["coordinates"][0] - longitude) ** 2 +
-            (bar["geometry"]["coordinates"][1] - latitude) ** 2)
+            (bar["geometry"]["coordinates"][1] - latitude) ** 2
+        )
     )
-    attributes = closest_bar["properties"]["Attributes"]
-    return attributes
+    return closest_bar
 
 
 def main():
     try:
         file_path = get_arguments().filepath
-        bar_data = load_data(file_path)
+        if os.path.isfile(file_path):
+            bar_data = load_data(file_path)
+        else:
+            exit("This file does not exist")
     except ValueError:
-        print("This is not a json file")
-        exit()
+        exit("This is not a json file")
     try:
         longitude = float(input("Введите долготу:\n"))
         latitude = float(input("Введите широту:\n"))
     except ValueError:
-        print("This is not numbers")
-        exit()
-    biggest_bar = get_attributes_biggest_bar(bar_data)
-    smallest_bar = get_attributes_smallest_bar(bar_data)
-    closest_bar = get_attributes_closest_bar(bar_data, longitude, latitude)
-    print("INFORMATION ABOUT THE BIGGEST BAR\n", biggest_bar, end=3 * "\n")
-    print("INFORMATION ABOUT THE SMALLEST BAR\n", smallest_bar, end=3 * "\n")
-    print("INFORMATION ABOUT THE CLOSEST BAR\n", closest_bar)
+        exit("This is not numbers")
+    biggest_bar = get_name_biggest_bar(bar_data)
+    smallest_bar = get_name_smallest_bar(bar_data)
+    closest_bar = get_name_closest_bar(bar_data, longitude, latitude)
+    print(f"САМЫЙ БОЛЬШОЙ БАР:\n{biggest_bar}\n")
+    print(f"САМЫЙ МАЛЕНЬКИЙ БАР:\n{smallest_bar}\n")
+    print(f"САМЫЙ БЛИЗКИЙ БАР\n{closest_bar}\n")
 
 
 if __name__ == "__main__":
