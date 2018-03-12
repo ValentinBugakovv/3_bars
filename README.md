@@ -52,7 +52,7 @@ $ python bars.py filepath.json # possibly requires call of python3 executive ins
 # Пример вывода
 
 САМЫЙ БОЛЬШЙ БАР:
-Спорт бар << Красная машина >>
+Спорт бар <<Красная машина>>
 
 САМЫЙ МАЛЕНЬКИЙ БАР:
 Бар Соки
