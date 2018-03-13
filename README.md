@@ -19,10 +19,17 @@ from math import sqrt
 
 ```bash
 
-$ python bars.py  # possibly requires call of python3 executive instead of just python
+$ python bars.py file_path  # possibly requires call of python3 executive instead of just python
 
-# Пример вывода
+```
 
+Запуск на Windows происходит аналогично.
+
+# Как это работает
+
+После запуска программа попросит ввести долготу и широту.
+Пример вывода:
+```bash
 САМЫЙ БОЛЬШЙ БАР:
 Спорт бар <<Красная машина>>
 
@@ -31,10 +38,7 @@ $ python bars.py  # possibly requires call of python3 executive instead of just 
 
 САМЫЙ МАЛЕНЬКИЙ БАР:
 Бар <<Разлив>>
-
 ```
-
-Запуск на Windows происходит аналогично.
 
 # Цели проекта
 
