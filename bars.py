@@ -5,22 +5,10 @@ from math import sqrt
 
 
 def get_arguments():
-    parser = argparse.ArgumentParser(
-        description="Path to json file"
-    )
-    parser.add_argument(
-        "file_path",
-        help="Path to json file",
-    )
+    parser = argparse.ArgumentParser(description="Path to json file")
+    parser.add_argument("file_path", help="Path to json file")
     args = parser.parse_args()
     return args
-
-
-def get_features(func):
-    def warp(*args):
-        return func(args[0])["features"]
-
-    return warp
 
 
 def get_bar_name(func):
@@ -30,10 +18,9 @@ def get_bar_name(func):
     return warp
 
 
-@get_features
 def load_data(file_path):
     with open(file_path, "r", encoding="UTF-8") as json_file:
-        return json.load(json_file)
+        return json.load(json_file)["features"]
 
 
 @get_bar_name
@@ -70,9 +57,6 @@ def get_name_closest_bar(bar_data, longitude=55, latitude=37):
 
 
 def main():
-    bar_data = None
-    longitude = 0
-    latitude = 0
     try:
         file_path = get_arguments().file_path
         if os.path.isfile(file_path):
