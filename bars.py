@@ -16,27 +16,25 @@ def get_arguments():
     return args
 
 
-def features(func):
+def get_features(func):
     def warp(*args):
         return func(args[0])["features"]
-
     return warp
 
 
-def bar_name(func):
+def get_bar_name(func):
     def warp(*args):
         return func(args[0])["properties"]["Attributes"]["Name"]
-
     return warp
 
 
-@features
+@get_features
 def load_data(file_path):
     with open(file_path, "r", encoding="UTF-8") as json_file:
         return json.load(json_file)
 
 
-@bar_name
+@get_bar_name
 def get_name_biggest_bar(bar_data):
     biggest_bar = max(
         bar_data,
@@ -46,7 +44,7 @@ def get_name_biggest_bar(bar_data):
     return biggest_bar
 
 
-@bar_name
+@get_bar_name
 def get_name_smallest_bar(bar_data):
     smallest_bar = min(
         bar_data,
@@ -56,8 +54,8 @@ def get_name_smallest_bar(bar_data):
     return smallest_bar
 
 
-@bar_name
-def get_name_closest_bar(bar_data, longitude=37.55, latitude=55.75):
+@get_bar_name
+def get_name_closest_bar(bar_data, longitude, latitude):
     closest_bar = min(
         bar_data,
         key=lambda bar:
