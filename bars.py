@@ -19,12 +19,14 @@ def get_arguments():
 def get_features(func):
     def warp(*args):
         return func(args[0])["features"]
+
     return warp
 
 
 def get_bar_name(func):
     def warp(*args):
         return func(args[0])["properties"]["Attributes"]["Name"]
+
     return warp
 
 
@@ -72,7 +74,7 @@ def main():
     longitude = None
     latitude = None
     try:
-        file_path = get_arguments().filepath
+        file_path = get_arguments().file_path
         if os.path.isfile(file_path):
             bar_data = load_data(file_path)
         else:
