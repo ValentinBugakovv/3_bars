@@ -79,7 +79,7 @@ def main():
             bar_data = load_data(file_path)
         else:
             exit("This file does not exist")
-    except SyntaxError:
+    except FileNotFoundError:
         exit("This is not a json file")
     try:
         longitude = float(input("Введите долготу:\n"))
