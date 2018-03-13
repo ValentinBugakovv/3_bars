@@ -47,7 +47,7 @@ def get_closest_bar(bar_data, longitude=37.55, latitude=55.75):
 
 ```bash
 
-$ python bars.py filepath.json # possibly requires call of python3 executive instead of just python
+$ python bars.py  # possibly requires call of python3 executive instead of just python
 
 # Пример вывода
 
