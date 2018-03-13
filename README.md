@@ -13,34 +13,6 @@ import argparse
 import os
 from math import sqrt
 
-# Функция def get_arguments принимает на вход путь до файла из командной строки
-def get_arguments():
-return args
-
-# Функция def decorate является декоратором для красивого вывода json объектов
-
-def decorate(func):
-    def wrap(*args):
-        return json.dumps(func(args[0]))
-    return wrap
-    
-# Функция def load_data принимет на вход путь до файла и декодирует json в строку
-
-def load_data(filepath):
-return json.load(jsonfile)
-
-# Функция def get_biggest_bar(bar_data) принмает список баров 
-# и выводит информацию о самом большом баре в формате json
-def get_biggest_bar(bar_data):
-return attributes
-
-# Функця  def get_smallest_bar(bar_data) аналогична, но выводит информацию о самом маленьком баре
-
-# Функция def get_closest_bar(bar_data, longitude, latitude) примает на вход список баров, 
-# координаты( долгота и широта), 
-# возвращает самый близкий бар относительно введенных координатов в формате json
-def get_closest_bar(bar_data, longitude=37.55, latitude=55.75):
-  return attributes
 ```
 
 Запуск на Linux:
