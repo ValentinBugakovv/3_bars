@@ -70,6 +70,9 @@ def get_name_closest_bar(bar_data, longitude=37.55, latitude=55.75):
 
 
 def main():
+    bar_data = None
+    longitude = None
+    latitude = None
     try:
         file_path = get_arguments().filepath
         if os.path.isfile(file_path):
