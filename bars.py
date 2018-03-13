@@ -57,7 +57,7 @@ def get_name_smallest_bar(bar_data):
 
 
 @get_bar_name
-def get_name_closest_bar(bar_data, longitude, latitude):
+def get_name_closest_bar(bar_data, longitude=55, latitude=37):
     closest_bar = min(
         bar_data,
         key=lambda bar:
@@ -71,8 +71,8 @@ def get_name_closest_bar(bar_data, longitude, latitude):
 
 def main():
     bar_data = None
-    longitude = None
-    latitude = None
+    longitude = 0
+    latitude = 0
     try:
         file_path = get_arguments().file_path
         if os.path.isfile(file_path):
@@ -89,9 +89,9 @@ def main():
     biggest_bar = get_name_biggest_bar(bar_data)
     smallest_bar = get_name_smallest_bar(bar_data)
     closest_bar = get_name_closest_bar(bar_data, longitude, latitude)
-    print(f"САМЫЙ БОЛЬШОЙ БАР:\n{biggest_bar}\n")
-    print(f"САМЫЙ МАЛЕНЬКИЙ БАР:\n{smallest_bar}\n")
-    print(f"САМЫЙ БЛИЗКИЙ БАР\n{closest_bar}\n")
+    print("САМЫЙ БОЛЬШОЙ БАР:\n{}\n".format(biggest_bar))
+    print("САМЫЙ МАЛЕНЬКИЙ БАР:\n{}\n".format(smallest_bar))
+    print("САМЫЙ БЛИЗКИЙ БАР\n{}\n".format(closest_bar))
 
 
 if __name__ == "__main__":
