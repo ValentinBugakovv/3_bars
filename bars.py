@@ -9,7 +9,7 @@ def get_arguments():
         description="Path to json file"
     )
     parser.add_argument(
-        "filepath",
+        "file_path",
         help="Path to json file",
     )
     args = parser.parse_args()
@@ -31,8 +31,8 @@ def bar_name(func):
 
 
 @features
-def load_data(filepath):
-    with open(filepath, "r", encoding="UTF-8") as json_file:
+def load_data(file_path):
+    with open(file_path, "r", encoding="UTF-8") as json_file:
         return json.load(json_file)
 
 
