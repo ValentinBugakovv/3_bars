@@ -27,11 +27,7 @@ def load_data(file_path):
 def get_name_biggest_bar(bar_data):
     biggest_bar = max(
         bar_data,
-        key=lambda bar:
-        bar
-        ["properties"]
-        ["Attributes"]
-        ["SeatsCount"]
+        key=lambda bar: bar["properties"]["Attributes"]["SeatsCount"]
     )
     return biggest_bar
 
@@ -40,11 +36,7 @@ def get_name_biggest_bar(bar_data):
 def get_name_smallest_bar(bar_data):
     smallest_bar = min(
         bar_data,
-        key=lambda bar:
-        bar
-        ["properties"]
-        ["Attributes"]
-        ["SeatsCount"]
+        key=lambda bar:bar["properties"]["Attributes"]["SeatsCount"]
     )
     return smallest_bar
 
